@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <context id="MybatisGenerator" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <!-- 是否去除自动生成的注释，true是，false否 -->
+            <property name="supressAllComments" value="true" />
+        </commentGenerator>
+
+        <!-- 数据库连接信息：驱动类、连接地址、用户名、密码 -->
+        <!--mysql://localhost:3306/yujingguang?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Hongkong-->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/miaosha?serverTimezone=GMT%2B8&amp;useSSL=false"
+                        userId="root" password="root">
+        </jdbcConnection>
+
+        <!-- 默认值 -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <!-- 生成的po实体类的存放位置 -->
+        <javaModelGenerator targetPackage="com.miaoshaproject.dataobject"
+                            targetProject="src/main/java">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <!-- 生成的mapper映射文件（XML文件）的存放位置 -->
+        <sqlMapGenerator targetPackage="mapping" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+        <!-- 生成的mapper接口（JAVA文件）的存放位置 -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.miaoshaproject.dao" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+        <!-- 指定数据库表 -->
+        <table tableName="user_info" domainObjectName="UserDO" />
+        <table tableName="user_password" domainObjectName="UserPasswordDO" />
+    </context>
+</generatorConfiguration>
