@@ -65,7 +65,7 @@ public class UserController extends BaseController{
         userModel.setGender(new Byte(String.valueOf(gender.intValue())));
         userModel.setAge(age);
         userModel.setTelphone(telphone);
-        userModel.setRegisitMode("byphone");
+        userModel.setRegistMode("byphone");
         userModel.setEncrptPassword(this.EncodeByMd5(password));
 
         userService.register(userModel);

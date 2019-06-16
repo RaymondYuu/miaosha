@@ -21,7 +21,7 @@ public class UserModel {
     private Integer age;
     @NotBlank(message = "手机号不能为空")
     private String telphone;
-    private String regisitMode;
+    private String registerMode;
     private Integer thirdPartyId;
     @NotBlank(message = "密码不能为空")
     private String encrptPassword;
@@ -74,12 +74,12 @@ public class UserModel {
         this.telphone = telphone;
     }
 
-    public String getRegisitMode() {
-        return regisitMode;
+    public String getRegisterMode() {
+        return registerMode;
     }
 
-    public void setRegisitMode(String regisitMode) {
-        this.regisitMode = regisitMode;
+    public void setRegistMode(String registerMode) {
+        this.registerMode = registerMode;
     }
 
     public Integer getThirdPartyId() {

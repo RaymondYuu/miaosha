@@ -41,7 +41,9 @@
         </javaClientGenerator>
 
         <!-- 指定数据库表 -->
-        <table tableName="user_info" domainObjectName="UserDO" />
-        <table tableName="user_password" domainObjectName="UserPasswordDO" />
+<!--        <table tableName="user_info" domainObjectName="UserDO" />-->
+<!--        <table tableName="user_password" domainObjectName="UserPasswordDO" />-->
+        <table tableName="item" domainObjectName="ItemDo" />
+        <table tableName="item_stock" domainObjectName="ItemStockDo" />
     </context>
 </generatorConfiguration>

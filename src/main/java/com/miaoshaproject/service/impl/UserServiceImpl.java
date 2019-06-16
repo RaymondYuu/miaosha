@@ -50,7 +50,7 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional//声明事务
     public void register(UserModel userModel) throws BusinessException {
-        if (userModel != null){
+        if (userModel == null){
             throw new BusinessException(EmBusinessError.PARAMETER_VALIDATION_ERROR);
         }
 //        if (StringUtils.isEmpty(userModel.getName())
@@ -66,11 +66,16 @@ public class UserServiceImpl implements UserService {
         }
         //实现model->dataobject方法
         UserDO userDO = convertFromModel(userModel);
-
-        userDOMapper.insertSelective(userDO);
         userModel.setId(userDO.getId());
+        try {
+            userDOMapper.insertSelective(userDO);
+        } catch (Exception e) {
+            throw new BusinessException(EmBusinessError.PARAMETER_VALIDATION_ERROR,"手机号已重复注册");
+        }
+
 
         UserPasswordDO userPasswordDO = convertPasswordFromModel(userModel);
+        userPasswordDO.setUserId(userDO.getId());
         userPasswordDOMapper.insertSelective(userPasswordDO);
 
         return;
